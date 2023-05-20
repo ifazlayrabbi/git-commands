@@ -1,0 +1,252 @@
+
+Create/ Modify
+-------------------
+creating a file: touch ab.txt
+file modify:     vim ab.txt, code ab.txt
+
+
+Remove/ Delete
+-------------------
+pwd               // current location
+git rm a.txt      // remove using git
+git rm a.txt -f   // forcefully remove
+git rm chached a.txt  // doesn't acutually delete the file (only show the stage action)
+git rm -r folder_name // forcefully remove folder
+
+
+Rename
+--------------------
+mv a.jpg ab.jpg
+
+move
+--------------------
+mv ab.jpg /home/folder1/
+
+
+
+
+
+
+
+
+git steps
+---------
+local - stage/track - commit
+
+
+(use others code) 
+git clone https://github.com/username/repository.git
+
+git config --list
+git config --global user.email "ifazlayrabbi@gmail.com"
+git config --global user.name "ifazlayrabbi"
+
+
+
+git init
+git status
+
+
+git diff a.txt 
+(differences between previous & present data in a file)
+
+git checkout a.txt 
+(rollback to the previous version of the file)
+
+
+
+Local to stage/track
+--------------------
+git add -A
+git add --all
+git add .         // stage the current folder
+git add *         // doesn't stage the deleted file
+git add a.txt     // stage a single file
+git add *.txt     // stage all txt file inside the scope
+
+Back to local from Stage
+------------------------
+git reset		// rollback before doing commit
+git reset --hard  // rollback from commit, rollback a physically deleted file
+git restore --staged a.txt  // unstage a file
+
+
+
+stage to commit
+---------------
+git commit
+git commit -m "Comments"
+
+git reset head~
+git reset --hard head~1
+
+git push -f origin main
+
+
+
+
+branch
+----------
+git branch            // how many branches are there
+git branch branch1    // create branch
+git checkout branch1  // switch to another branch
+
+
+
+delete branch
+-------------
+* first switch to main/ other branch then delete the specific branch
+
+git branch --delete branch1    // -d, -D
+git branch -D branch1          // branch isn't fully merged
+git push origin --delete branch1
+
+
+
+reset back (public)
+--------------------
+git revert head
+git push origin -u main
+
+git revert -m 1 <commit-hash> (f6625c6)
+git revert -m 2 <commit-hash> 
+git push origin -u main
+
+
+reset back(private)
+--------------------
+git log (q to exit)
+git log -n3
+git reflog
+
+git reset head~
+git reset --hard head~1
+
+git reset --hard head_code (f6625c6f1a87ddfc079d5cab599ef506db8b65bf)
+git reset --hard reflog (f6625c6)
+git push -f origin main
+
+
+
+merge with another branch
+-------------------------
+git merge branch1
+
+1. goto main
+2. then, 
+   merge main branch with the other branch and vice-versa.
+
+git merge branch1 -m "merging on 'main' with branch1"
+-> share all of branch1 to main"
+
+
+
+merge conflict
+-----------------
+// when one file is modified by multiple people
+// same name file - in two different branch
+// modify in the same place inside the code
+
+
+
+Set github profile
+------------------
+git remote add origin https://github.com/username/repository.git
+git remote set-url origin https://github.com/username/new-repository.git
+
+
+
+git upload to remote
+--------------------------------
+git push origin main
+git checkout branch1
+git push origin branch1
+
+
+
+git import from remote
+---------------------------------
+git fetch, 
+git merge, 
+git pull
+(fetch + merge = pull)
+
+git fetch origin main
+git merge main
+git pull origin main
+
+
+
+
+
+
+
+
+Temporarily save changes
+---------------------------------
+git stash	/ git stash save "message"	(Create stash with or without message)
+git stash pop	(Remove from stash & reapply to the file)
+git stash apply	(Keep the stash & reapply to the file)
+
+By default, (git stash pop) will re-apply the most recently created stash: stash@{0}
+You can choose which stash to re-apply:
+
+git stash pop stash@{2}
+git stash apply stash@{2}
+
+
+git stash save "add style to our site"
+
+
+See the stash list
+-----------------------
+git stash list
+
+stash@{0}: On main: add style to our site
+stash@{1}: WIP on main: 5002d47 our new homepage
+stash@{2}: WIP on main: 5002d47 our new homepage
+
+
+
+Clear stash info
+-------------------
+git stash clear
+git stash drop stash@{2}
+
+
+
+
+
+
+
+
+Rename git branch
+--------------------------------
+Switch to the target branch
+git branch -m newName
+
+See the changes: git branch -a
+
+
+Rename git branch form 'main branch'
+--------------------------------------
+git branch -m branch1 newName
+
+
+Rename git branch on Remote
+--------------------------------------
+	- delete the remote branch (git branch origin --delete branch1)
+	- send the new branch	   (git push origin new-name)
+Or,
+	git push origin :old-name new-name
+
+
+
+
+
+
+
+
+
+
+
